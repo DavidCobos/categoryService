@@ -1,0 +1,72 @@
+{
+  "name": "privarsa-categories",
+  "vendor": "privarsa",
+  "version": "0.0.1",
+  "title": "Servicio categorias",
+  "description": "Reference app for VTEX IO Services",
+  "mustUpdateAt": "2018-01-04",
+  "categories": [],
+  "dependencies": {},
+  "builders": {
+    "node": "6.x",
+    "docs": "0.x"
+  },
+  "scripts": {
+    "prereleasy": "bash lint.sh"
+  },
+  "credentialType": "absolute",
+  "policies": [
+    {
+      "name": "colossus-fire-event"
+    },
+    {
+      "name": "colossus-write-logs"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "portal.vtexcommercestable.com.br",
+        "path": "/api/catalog_system/pub/*"
+      }
+    },
+    {
+      "name": "POWER_USER_DS"
+    },
+    {
+      "name": "ADMIN_DS"
+    },
+    {
+      "name": "Get_User_By_Identifier"
+    },
+    {
+      "name": "template-criar"
+    },
+    {
+      "name": "template-editar"
+    },
+    {
+      "name": "send-message"
+    },
+    {
+      "name": "LogisticsAdmin"
+    },
+    {
+      "name": "read_prices"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "portal.vtexcommercestable.com.br",
+        "path": "/api/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "privarsa.net",
+        "path": "/apivtex/api/*"
+      }
+    }
+  ],
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
+}
