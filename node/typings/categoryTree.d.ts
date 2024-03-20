@@ -5,17 +5,7 @@ interface category {
   name: string
   hasChildren: boolean
   url: string
-  children: Children[]
-  Title: string
-  MetaTagDescription: string
-}
-
-interface Children {
-  id: number
-  name: string
-  hasChildren: boolean
-  url: string
-  children: any[]
+  children: category[]
   Title: string
   MetaTagDescription: string
 }

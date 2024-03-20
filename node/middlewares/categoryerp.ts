@@ -1,8 +1,13 @@
 export async function categoryerp(ctx:Context, next:() => Promise<categoryResponse[]>) {
 
-    const {clients: {categoryerp: CategoryERPClient}, state:{categoryTree}} = ctx
+    const {clients: {categoryerp: CategoryERPClient}, state:{categoryTree, categoryId}} = ctx
 
-    const clientResponse = categoryTree.map(async element => {
+    let subCategory:categoryTree = categoryTree 
+    if (categoryId > 0){
+        subCategory = categoryTree.find((element) => element.id == categoryId)?.children ?? [];
+    }
+    
+    const clientResponse = subCategory.map(async element => {
 
         const resultC = await CategoryERPClient.getCategoryPicture(element.id.toString())
 

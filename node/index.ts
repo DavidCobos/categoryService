@@ -3,6 +3,7 @@ import { LRUCache, method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { category } from './middlewares/category'
+import { subCategory } from './middlewares/category'
 import { categoryerp } from './middlewares/categoryerp'
 
 const TIMEOUT_MS = 2000
@@ -30,10 +31,10 @@ const clients: ClientsConfig<Clients> = {
     },
     // This key will be merged with the default options and add this cache to our Status client.
     category: {
-      memoryCache
+    },
+    subCategory: {
     },
     categoryerp: {
-      memoryCache
     },
   },
 }
@@ -45,6 +46,7 @@ declare global {
   // The shape of our State object found in `ctx.state`. This is used as state bag to communicate between middlewares.
   interface State extends RecorderState {
     categoryTree: categoryTree
+    categoryId: number
     code: number
   }
 }
@@ -56,6 +58,9 @@ export default new Service({
     // `status` is the route ID from service.json. It maps to an array of middlewares (or a single handler).
     category: method({
       GET: [category, categoryerp],
+    }),    
+    subcategory: method({
+      GET: [subCategory, categoryerp],
     }),
   },
 })

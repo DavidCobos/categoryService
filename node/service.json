@@ -9,6 +9,10 @@
     "category": {
       "path": "/privarsa/category/",
       "public": true
+    },
+    "subcategory": {
+      "path": "/privarsa/subcategory/:categoryId",
+      "public": true
     }
   }
 }
