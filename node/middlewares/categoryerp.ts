@@ -15,6 +15,7 @@ export async function categoryerp(ctx:Context, next:() => Promise<categoryRespon
             id: element.id,
             nombre: element.name,
             title: element. Title,
+            url: element.url,
             imageUrl: resultC.imageUrl,
             special: resultC.special
         }
