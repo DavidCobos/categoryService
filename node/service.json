@@ -13,6 +13,10 @@
     "subcategory": {
       "path": "/privarsa/subcategory/:categoryId",
       "public": true
+    },
+    "mainproducts": {
+      "path": "/privarsa/mainproducts/:familysubId",
+      "public": true
     }
   }
 }

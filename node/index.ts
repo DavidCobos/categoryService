@@ -2,9 +2,8 @@ import type { ClientsConfig, ServiceContext, RecorderState } from '@vtex/api'
 import { LRUCache, method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
-import { category } from './middlewares/category'
-import { subCategory } from './middlewares/category'
-import { categoryerp } from './middlewares/categoryerp'
+import { category, subCategory } from './middlewares/category'
+import { getFamilies, getMainProducts } from './middlewares/erpPrivarsa'
 
 const TIMEOUT_MS = 2000
 
@@ -32,9 +31,7 @@ const clients: ClientsConfig<Clients> = {
     // This key will be merged with the default options and add this cache to our Status client.
     category: {
     },
-    subCategory: {
-    },
-    categoryerp: {
+    erpPrivarsa: {
     },
   },
 }
@@ -57,10 +54,13 @@ export default new Service({
   routes: {
     // `status` is the route ID from service.json. It maps to an array of middlewares (or a single handler).
     category: method({
-      GET: [category, categoryerp],
+      GET: [category, getFamilies],
     }),    
     subcategory: method({
-      GET: [subCategory, categoryerp],
+      GET: [subCategory, getFamilies],
+    }),
+    mainproducts: method({
+      GET: [getMainProducts],
     }),
   },
 })

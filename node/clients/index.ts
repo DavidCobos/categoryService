@@ -2,7 +2,7 @@ import { IOClients } from '@vtex/api'
 
 import Status from './status'
 import CategoryClient from './category'
-import CategoryERPClient from './categoryerp'
+import CategoryERPClient from './erpPrivarsa'
 
 // Extend the default IOClients implementation with our own custom clients.
 export class Clients extends IOClients {
