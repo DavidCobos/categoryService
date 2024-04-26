@@ -17,6 +17,10 @@
     "mainproducts": {
       "path": "/privarsa/mainproducts/:familysubId",
       "public": true
+    },
+    "productspecifications": {
+      "path": "/privarsa/productspecifications/:mainproductId",
+      "public": true
     }
   }
 }

@@ -3,7 +3,7 @@ import { LRUCache, method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { category, subCategory } from './middlewares/category'
-import { getFamilies, getMainProducts } from './middlewares/erpPrivarsa'
+import { getFamilies, getMainProducts, getProductSpecification } from './middlewares/erpPrivarsa'
 
 const TIMEOUT_MS = 2000
 
@@ -55,12 +55,15 @@ export default new Service({
     // `status` is the route ID from service.json. It maps to an array of middlewares (or a single handler).
     category: method({
       GET: [category, getFamilies],
-    }),    
+    }),
     subcategory: method({
       GET: [subCategory, getFamilies],
     }),
     mainproducts: method({
       GET: [getMainProducts],
+    }),
+    productspecifications: method({
+      GET: [getProductSpecification],
     }),
   },
 })
