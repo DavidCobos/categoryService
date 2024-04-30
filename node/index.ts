@@ -3,7 +3,7 @@ import { LRUCache, method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { category, subCategory } from './middlewares/category'
-import { getFamilies, getMainProducts, getProductSpecification } from './middlewares/erpPrivarsa'
+import { getFamilies, getMainProductInfo, getProductSpecification } from './middlewares/erpPrivarsa'
 
 const TIMEOUT_MS = 2000
 
@@ -59,8 +59,8 @@ export default new Service({
     subcategory: method({
       GET: [subCategory, getFamilies],
     }),
-    mainproducts: method({
-      GET: [getMainProducts],
+    mainproductinfo: method({
+      GET: [getMainProductInfo],
     }),
     productspecifications: method({
       GET: [getProductSpecification],

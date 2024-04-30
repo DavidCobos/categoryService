@@ -40,7 +40,7 @@ export async function getFamilies(ctx:Context, next:() => Promise<categoryRespon
     await next()
 }
 
-export async function getMainProducts(ctx:Context, next:() => Promise<mainProductResponse[]>) {
+export async function getMainProductInfo(ctx:Context, next:() => Promise<mainProductResponse[]>) {
     const {
         vtex: {
             route: { params },
@@ -48,23 +48,14 @@ export async function getMainProducts(ctx:Context, next:() => Promise<mainProduc
         clients: {categoryerp: ERPPrivarsaClient}
     } = ctx
 
-    const { familysubId } = params
-    const strFamilysubId = familysubId as string
+    const { productId } = params
+    const strProductId = productId as string
 
-    const resultC = await ERPPrivarsaClient.getMainProducts(strFamilysubId)
-
-    const mainProducts = resultC.map(element => {
-
-      if(!element.imageUrl){
-        element.imageUrl = 'https://privarsa.vtexassets.com/assets/vtex/assets-builder/privarsa.b2bstore-privarsa/0.0.8/logos/Logo-Privarsa-1___531eda977635168aeea4ef41d82c58f3.png'
-      }
-
-      return element
-  });
+    const mainProductInfo = await ERPPrivarsaClient.getMainProductInfo(strProductId)
 
     ctx.status = 200
     ctx.body = {
-        mainProducts
+        mainProductInfo
     }
 
     await next()

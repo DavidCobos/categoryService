@@ -4,9 +4,9 @@ import { ExternalClient } from '@vtex/api'
 export default class ERPPrivarsaClient extends ExternalClient {
     
     private readonly routes = {
-        getCategoryPicture:( categoryId:string) => `/VtexIOService/GetCategoryImage/${categoryId}`,
-        getMainProducts:( familysubId:string) => `/VtexIOService/GetMainProducts/${familysubId}`,
-        getProductSpecification:( mainProductId:string) => `/VtexIOService/GetProductSpecifications/${mainProductId}`,
+        getCategoryPicture:(categoryId:string) => `/VtexIOService/GetCategoryImage/${categoryId}`,
+        getMainProductInfo:(productId:string) => `/VtexIOService/GetMainProductInfo/${productId}`,
+        getProductSpecification:(mainProductId:string) => `/VtexIOService/GetProductSpecifications/${mainProductId}`,
     }
 
   constructor(context: IOContext, options?: InstanceOptions) {
@@ -16,17 +16,17 @@ export default class ERPPrivarsaClient extends ExternalClient {
   }
 
   public async getCategoryPicture(categoryId: string): Promise<categoryImage> {
-    const result = await this.http.get(this.routes.getCategoryPicture( categoryId))
+    const result = await this.http.get(this.routes.getCategoryPicture(categoryId))
     return result
   }
 
-  public async getMainProducts(familysubId: string): Promise<mainProductResponse[]> {
-    const result = await this.http.get(this.routes.getMainProducts( familysubId))
+  public async getMainProductInfo(productId: string): Promise<mainProductResponse[]> {
+    const result = await this.http.get(this.routes.getMainProductInfo(productId))
     return result
   }
 
   public async getProductSpecification(mainProductId: string): Promise<productSpecificationResponse[]> {
-    const result = await this.http.get(this.routes.getProductSpecification( mainProductId))
+    const result = await this.http.get(this.routes.getProductSpecification(mainProductId))
     return result
   }
 }

@@ -14,8 +14,8 @@
       "path": "/privarsa/subcategory/:categoryId",
       "public": true
     },
-    "mainproducts": {
-      "path": "/privarsa/mainproducts/:familysubId",
+    "mainproductinfo": {
+      "path": "/privarsa/mainproductinfo/:productId",
       "public": true
     },
     "productspecifications": {
